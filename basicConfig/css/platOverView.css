@@ -1,0 +1,86 @@
+.top-padding {
+	padding-top: 15px;
+}
+
+.chart2-div-height {
+	height: 255px;
+	padding: 0px;
+}
+
+.chart-div-height {
+	height: 360px;
+	padding-top: 5px;
+}
+
+.card-div-height {
+	height: 209px;
+	padding-top: 5px;
+}
+
+.chart-kpi-div-height {
+	height: 122px;
+	padding-top: 38px;
+}
+
+.chart-kpi-sm-div-height {
+	padding-top: 58px;
+}
+
+.table_custom_font_size {
+	font-size: 4;
+	color: #FFFFFF;
+}
+
+.kpi-card-view-search {
+	padding: 0px;
+	margin: 0px;
+}
+
+.kpi-card-view-search-button {
+	background-color: #4b78f7;
+	border-radius: 2px;
+	width: 35px;
+	height: 25px;
+	padding: 0px;
+}
+
+.kpi-card-view-search-button:hover {
+	background-color: #4b5cc4;
+}
+
+.kpi-card-view-search-div {
+	font-size: 8px;
+	padding-right: 8px;
+	float: right;
+	/*width:200px;*/
+	padding-top: 15px;
+	height: 30px;
+	background-color: #FFFFFF;
+}
+
+.kpi-card-view-moreBtn {
+	background-color: #FFFFFF;
+	color: #000000;
+	height: 22px;
+	width: 50px;
+	padding-top: 2px;
+	margin-top: 0px;
+}
+
+.kpi-card-view-moreBtn:hover {
+	background-color: #4b5cc4;
+}
+
+.kpi-card-veiw-span {
+	padding-bottom: 10px;
+}
+
+.kpi-label-margin-top {
+	margin-top: 5px;
+}
+
+.kpi-card-middle{
+	line-height: 209px;
+ 	vertical-align: middle;
+ 	text-align:center;
+}

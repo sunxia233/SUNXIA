@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>节点维护</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+			name="viewport">
+			<link href="../../core/assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="../../core/assets/plugins/thirdParty/bootstrap/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="../../core/assets/plugins/thirdParty/bootstrap/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="../../core/assets/plugins/thirdParty/bootstrap/css/menu.css" rel="stylesheet" type="text/css" />
+	<!-- Bootstrap 3.3.6 -->
+	<link rel="stylesheet"
+		  href="../../core/assets/plugins/thirdParty/bootstrap/css/bootstrap.css"
+		  type="text/css"></link>
+	<!-- Font Awesome -->
+	<!-- <link rel="stylesheet" href="../../core/assets/css/font-awesome.min.css" type="text/css"></link> -->
+	<!-- Ionicons -->
+	<!-- <link rel="stylesheet" href="../../core/assets/css/ionicons.min.css" type="text/css"></link> -->
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../../core/assets/LTE/css/AdminLTE.css"
+		  type="text/css"></link>
+	<!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+	<link rel="stylesheet"
+		  href="../../core/assets/LTE/css/skins/_all-skins.min.css"
+		  type="text/css"></link>
+	<!-- iCheck -->
+	<link rel="stylesheet"
+		  href="../../core/assets/LTE/plugins/iCheck/flat/blue.css"
+		  type="text/css"></link>
+	<!-- Morris chart -->
+	<link rel="stylesheet"
+		  href="../../core/assets/LTE/plugins/morris/morris.css" type="text/css"></link>
+	<!-- jvectormap -->
+	<link rel="stylesheet"
+		  href="../../core/assets/LTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css"
+		  type="text/css"></link>
+	<!-- Date Picker -->
+	<link rel="stylesheet"
+		  href="../../core/assets/LTE/plugins/datepicker/datepicker3.css"
+		  type="text/css"></link>
+	<!-- Daterange picker -->
+	<link rel="stylesheet"
+		  href="../../core/assets/LTE/plugins/daterangepicker/daterangepicker.css"
+		  type="text/css"></link>
+	<!-- bootstrap wysihtml5 - text editor -->
+	<link rel="stylesheet"
+		  href="../../core/assets/LTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"
+		  type="text/css"></link>
+	<!-- treeview -->
+	<link rel="stylesheet"
+		  href="../../core/assets/plugins/thirdParty/bootstrap/plugins/treeview/css/bootstrap-treeview.css"
+		  type="text/css"></link>
+	<!-- bootstrap-table -->
+	<link rel="stylesheet"
+		  href="../../core/assets/plugins/thirdParty/bootstrap/plugins/table/bootstrap-table.css"
+		  type="text/css"></link>
+	<!-- iconfont自定义图标 -->
+	<link rel="stylesheet" href="../../common/css/iconfont.css"
+		  type="text/css"></link>
+	<link rel="stylesheet" href="../../common/css/iconfont.common.css"
+		  type="text/css"></link>
+	<!-- bootstrap-select -->
+	<link rel="stylesheet"
+		  href="../../core/assets/plugins/thirdParty/bootstrap/plugins/select/css/bootstrap-select.css"
+		  type="text/css"></link>
+
+	<link href="../css/sjzl.css" rel="stylesheet" type="text/css" />
+
+	<link href="../../core/assets/css/dms-core.css" rel="stylesheet"
+		  type="text/css" />
+   
+        <link href="../css/platOverView.css" rel="stylesheet" type="text/css" />
+
+	
+	<style type="text/css">
+		/* 平台颜色值：深蓝 4B5CC4 蓝2EA7E0  绿27C432  黄FFB61E  红F55066 灰F5F5F5  ccc*/
+		/*下拉框选项的样式设置*/
+		.special-custom {
+			font-style: 微软雅黑;
+			font-size: 12px;
+			width: 114px;
+		}
+		/*下拉框显示框的样式设置*/
+		.btn {
+			font-style: 微软雅黑;
+			font-size: 12px;
+			border-radius: 0px;
+		}
+		 /*下拉框显示框的样式设置*/
+		 .btn {
+		    font-style: 微软雅黑;
+		    font-size: 12px;
+		    border-radius: 0px;
+		  }	
+		  
+		  button.btn.dropdown-toggle.btn-default {
+		  	height:25px;
+		  }
+		  
+		  /*下拉框选中后的宽度样式*/
+		  .bootstrap-select > .dropdown-toggle{
+		  	width:140px;
+		  }
+		  
+		  .icon_lists li {
+		  	text-align: left;
+		  }
+		  
+		  .bs-searchbox .form-control {
+		  	margin-bottom: 5px;
+		  }
+		  
+		  /*下拉框搜索框的样式设置*/
+    	.form-control {
+		  -moz-border-radius: 2px;
+		  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		  -webkit-border-radius: 2px;
+		  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		  background-color: #fafafa;
+		  border-radius: 2px;
+		  border: 1px solid #eeeeee;
+		  box-shadow: none;
+		  color: rgba(0, 0, 0, 0.6);
+		  font-size: 12px;
+		  height: 28px;
+		}
+		
+		.form-control:focus {
+		    border-color: #66afe9;
+		    outline: 0;
+		}
+		
+		.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:last-child > .btn, 
+		.input-group-btn:last-child > .btn-group > .btn, .input-group-btn:last-child > .dropdown-toggle, 
+		.input-group-btn:first-child > .btn:not(:first-child), 
+		.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+			border-top-left-radius: 2px;
+			border-bottom-left-radius: 2px;
+		}
+		
+		.input-group .form-control:first-child, .input-group-addon:first-child,
+		 .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group > .btn, 
+		 .input-group-btn:first-child > .dropdown-toggle, .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle), 
+		.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+			border-top-right-radius: 2px;
+			border-bottom-right-radius: 2px;
+		}
+		
+		/*搜索框样式*/
+		.btn-primary {
+			border-color: #ccc;
+			border: 1px solid transparent;
+		}
+		
+		.btn-default {
+			color: #595757;
+		}
+		
+		a {
+			color: #2EA7E0;
+		}
+		
+		.label {
+			font-size: 90%;
+		}
+		
+		.dropdown-menu > li > a {
+			color: #595757;
+		}
+		
+		.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+			color: #595757;
+		}
+		.dropdown-menu {
+			font-style: 微软雅黑;
+			font-size: 12px;
+		}
+
+		button.btn.dropdown-toggle.btn-default {
+			height: 25px;
+		}
+
+		/*下拉框选中后的宽度样式*/
+		.bootstrap-select>.dropdown-toggle {
+			width: 114px;
+		}
+
+		.bootstrap-select .form-control:not([class*="col-"]) {
+			width: 140px;
+		}
+
+		/*下拉框搜索框的样式设置*/
+		.form-control {
+			-moz-border-radius: 2px;
+			-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			-webkit-border-radius: 2px;
+			-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			background-color: #fafafa;
+			border-radius: 2px;
+			border: 1px solid #eeeeee;
+			box-shadow: none;
+			color: rgba(0, 0, 0, 0.6);
+			font-size: 12px;
+			height: 28px;
+		}
+
+		.form-control:focus {
+			border-color: #66afe9;
+			outline: 0;
+		}
+
+		/*搜索框样式*/
+		.btn-primary {
+			border-color: #ccc;
+			border: 1px solid transparent;
+		}
+
+		.btn-default {
+			color: #595757;
+		}
+
+		a {
+			color: #2EA7E0;
+		}
+
+		.label {
+			font-size: 90%;
+		}
+
+		.dropdown-menu>li>a {
+			color: #595757;
+		}
+
+		.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus {
+			color: #595757;
+		}
+
+		.nav>li>a:hover,.nav>li>a:active,.nav>li>a:focus {
+			color: #595757;
+		}
+
+		.nav-pills>li>a {
+			border-radius: 4px 4px 0px 0px;
+			color: #595757;
+		}
+
+		.nav-tabs-custom {
+			box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+		}
+
+		.list-group-item {
+			border: 0px solid #ddd;
+		}
+
+		.panel-default {
+			border-color: #F5F5F5;
+		}
+
+		.fixed-table-container {
+			border: 0px;
+		}
+
+		.label-danger{
+			background-color: #F55066 !important;
+		}
+
+		.label-noStart{
+			background-color: #dcdddd !important;
+		}
+
+		.label-starting{
+			background-color: #FFB61E !important;
+		}
+
+		.label-end{
+			background-color: #27c432 !important;
+		}
+
+		.node-treeview
+		{
+			color: #595757 !important;;
+		}
+
+		/* tree item 选中后的背景颜色*/
+
+		li.list-group-item.node-treeview.node-selected {
+			background-color: #CCEBF8 !important;
+		}
+
+		.list-group-item:first-child {
+			border-top-left-radius: 0px;
+			border-top-right-radius: 0px;
+			border-bottom-left-radius: 0px;
+			border-bottom-right-radius: 0px;
+		}
+
+		/* tree item 之间的间距*/
+		.list-group-item{
+			padding: 2px 2px;
+		}
+
+		div#right_view.content-wrapper {
+			min-height: 460px !important;
+		}
+
+		.nav-tabs-custom {
+			margin-bottom: 2px;
+		}
+
+
+
+	</style>
+	<script type="text/javascript" src="../js/jdwh.js"></script>
+
+
+
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="../js/thirdParty/html5shiv.min.js"></script>
+	<script src="../js/thirdParty//respond.min.js"></script>
+	<![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini"
+	  style="margin:0px;padding-left:0px;padding-top:0px;background-color:transparent; ">
+	
+
+	<div class="row">
+		<div class="row col-lg-4 "  style="background-color:transparent;padding-top:0px;padding-left:0px;padding-right:0px;">
+			<div class="user-panel div-border card-box"
+					 style="background-color:#efefef;height:30px;margin-right:10px;">
+					<h5 class="kuai-view-title" style="text-align:center" >交换节点</h5>
+			</div>
+			
+		
+		
+			<div class="row col-xs-12 col-sm-6 col-lg-3 user-panel card-box" >
+				<div class=" kuai-view3 " >
+						<div class="row kuai-view3-hf ">
+							
+							<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 kpi-card-view-search pull-right"  >
+							  
+							   <div class="col-sm-2 kpi-card-view-search input-group  icon_lists clear kpi-card-view-search-div  " style="margin-right:12px" >
+								  <select id="dtcljgJGSelect" class="selectpicker form-control"  size="20" data-live-search="true" >
+							
+								  </select>
+								   <span class="input-group-btn kpi-card-veiw-span"><button type="button" class="btn btn-block btn-primary kpi-card-view-search-button"><i class="glyphicon glyphicon-search"></i></button></span>
+							   </div>
+							</div>
+						<div class="row">
+						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 pull-right user-panel " >
+							<hr>
+							<div class="row " style="text-align:center" >
+								<div class="list-group "    id='jdlist'>
+									
+								</div>
+							</div>
+						</div>
+						</div>
+							
+						</div>
+				</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<hr>
+						</div>
+					</div>
+					
+					<div class="row kuai-view3-body">
+						<div id="wzxErrorRecordListCardDiv" class="col-lg-12 card-div-height">
+						</div>
+					</div>
+					<div class="row">
+	                       		<div class="col-lg-12">
+	                       			<hr>
+	                       		</div>
+	                       	</div>
+					</div>
+			
+		
+		</div>
+		<div class="row  col-lg-8"  style="padding-right:0px ;">
+			<div class="row ">
+				<div style="border:1px  ;padding-left:10px;" >
+					<p >
+						  <button type="button" class="btn  btn-primary pull-right" style="align:right" onclick="savainfo()">保存</button>					
+					</p>
+				</div>
+			</div>
+			<div class="row card-box " style="margin-left:10px;">
+				<div class="row col-lg-7   ">
+				<div class=" user-panel div-border"
+						 style="background-color:#efefef;height:30px;margin:0px;">
+						<h5 class="kuai-view-title" style="text-align:center" >节点信息</h5>
+				</div>
+				<form class="form-horizontal user-panel" role="form">
+                    <fieldset>
+                      
+                       <div class="form-group" >
+                          <label class="col-sm-2 control-label" for="ds_host" >节点名称</label>
+                          <div class="col-sm-4">
+                             <input class="form-control" id="jdmc" type="text" placeholder="节点名称"/>
+                          </div>
+                         
+                       </div>
+                    
+                    </fieldset>     
+                    <fieldset>
+                        <div class="form-group">
+                           <label for="disabledSelect"  class="col-sm-2 control-label">节点类型</label>
+                           <div class="col-sm-2">
+                              <select id="jdlx" class="form-control" style="width:110px ;height:30px">
+                                 <option value="1" >前置库</option>
+                                 <option  value="2">中心交换库</option>
+								  <option  value="3">中心索引库</option>
+								   <option  value="4">中心存储库</option>
+								    <option  value="5">主题库</option>
+                              </select>
+                           </div>
+                        </div>
+                    </fieldset>
+                     <fieldset>
+                      
+                       <div class="form-group">
+                          <label class="col-sm-2 control-label" for="ds_host">IP地址</label>
+                          <div class="col-sm-4">
+                             <input class="form-control" id="ipdz" type="text" placeholder=""/>
+                          </div>
+                         
+                       </div>
+                    
+                    </fieldset> 
+                     <fieldset>
+					  <div class="form-group">
+						  <label for="disabledSelect"  class="col-sm-2 control-label">启用状态</label>
+                        <label class="checkbox-inline">
+						  <input type="radio" name="optionsRadiosinline" id="qyzt1" 
+							 value="0" checked> 启用
+					   </label>
+					   <label class="checkbox-inline">
+						  <input type="radio" name="optionsRadiosinline" id="qyzt2" 
+							 value="1"> 停用
+					   </label>
+					   </div>
+                    </fieldset> 
+					 
+                </form>
+				</div>
+				<div class="row col-lg-5 pull-right" style="   
+			">
+					<div class="row">
+				<div class="user-panel div-border"
+						 style="background-color:#efefef;height:30px;margin:0px;">
+						<h5 class="kuai-view-title" style="text-align:center" >节点机构</h5>
+				</div>
+				<div class="input-group"
+					 style="width:200px;height:24px;padding-top:10px;text-align: center;padding-left:10px;">
+						<input type="text" name="q" style="width:200px;height:30px; "
+							id="search-input" class="form-control" placeholder="请输入机构关键字" />
+							<span class="input-group-btn">
+								<button name="search" id="search-btn" onclick="serchTreeview()"
+								class="btn btn-flat"
+								style="padding:0px;background-color:#4b78f7;height:30px;width:30px;">
+								<i class="icon iconfont icon_gray">&#xe604;</i>
+								</button> </span>
+				</div>
+
+				
+				<ul class="sidebar-menu"
+					style="padding-right:10px;padding-left:10px;">
+						<li class="active treeview">
+							<label for="treeview"></label>
+							<div id="treeview" style="overflow: auto;"></div>
+						</li>
+				</ul>
+			
+			</div>
+				
+				</div>
+			</div>	
+		</div>
+	</div>
+	
+
+<!-- ./wrapper -->
+
+
+
+
+<!-- jQuery 2.2.3 -->
+<script type="text/javascript"
+		src="../../core/assets/LTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery bootstrap-treeview -->
+<script type="text/javascript"
+		src="../../core/assets/plugins/thirdParty/bootstrap/plugins/treeview/js/bootstrap-treeview.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script type="text/javascript"
+		src="../../core/assets/plugins/thirdParty/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!-- bootstrap-table -->
+<script type="text/javascript"
+		src="../../core/assets/plugins/thirdParty/bootstrap/plugins/table/bootstrap-table.js"></script>
+<script type="text/javascript"
+		src="../../core/assets/plugins/thirdParty/bootstrap/plugins/table/locale/bootstrap-table-zh-CN.js"></script>
+<!-- bootstrap-select -->
+<script type="text/javascript"
+		src="../../core/assets/plugins/thirdParty/bootstrap/plugins/select/js/bootstrap-select.js"></script>
+<!-- layer弹出js -->
+<script type="text/javascript"
+		src="../../core/assets/plugins/layer/layer-v2.4.js"></script>
+<!-- jdwh -->
+<script type="text/javascript" src="../js/jdwh.js"></script>
+
+
+
+<script>
+	$(document).ready(function(){
+		jdjgTreeViewIni();
+		initJHJDHandler();
+	
+	});
+	
+</script>
+<!-- Bootstrap 3.3.6 -->
+    <script src="../../core/assets/plugins/thirdParty/bootstrap/js/bootstrap.js"></script>
+
+<script
+		src="../../core/assets/plugins/thirdParty/bootstrap/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<!-- <script src="../../core/assets/plugins/thirdParty/raphael-min.js"></script>
+<script src="../../core/assets/LTE/plugins/morris/morris.min.js"></script>  -->
+<!-- Sparkline -->
+<script
+		src="../../core/assets/plugins/thirdParty/bootstrap/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<!-- <script src="../../core/assets/plugins/thirdParty/raphael-min.js"></script>
+<script src="../../core/assets/LTE/plugins/morris/morris.min.js"></script>  -->
+<!-- Sparkline -->
+<script
+		src="../../core/assets/LTE/plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script
+		src="../../core/assets/LTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script
+		src="../../core/assets/LTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../../core/assets/LTE/plugins/knob/jquery.knob.js"></script>
+<!-- daterangepicker -->
+<script type="text/javascript"
+		src="../../core/assets/plugins/thirdParty/moment.min.js"></script>
+<script type="text/javascript"
+		src="../../core/assets/LTE/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script
+		src="../../core/assets/LTE/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script
+		src="../../core/assets/LTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script
+		src="../../core/assets/LTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../core/assets/LTE/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../core/assets/LTE/js/app.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="../../core/assets/LTE/js/pages/dashboard.js"></script> -->
+<!-- AdminLTE for demo purposes -->
+<script src="../../core/assets/LTE/js/demo.js"></script>
+
+
+</body>
+</html>
